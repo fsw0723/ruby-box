@@ -1,0 +1,32 @@
+{
+  "name": "eirc-single_user_rvm",
+  "version": "0.3.0",
+  "source": "UNKNOWN",
+  "author": "eirc",
+  "license": "Apache License, Version 2.0",
+  "summary": "Install and manage RVM and Ruby installations in Single-User mode.",
+  "description": "",
+  "project_page": "https://github.com/eirc/puppet-single_user_rvm",
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Changelog.md": "801067faa6a79643c492ca412d1d214f",
+    "Modulefile": "6824c60882872e5c4800f093a0c49766",
+    "README.md": "cab6d4a6be1f86bc3724685c8523829a",
+    "Vagrantfile~": "ae4d9341af8f6ba65b1c3123cc7686c1",
+    "manifests/dependencies.pp": "ad494a24d7b755aa788df3c796970207",
+    "manifests/init.pp": "bb2708050130a8876eab2350f8159128",
+    "manifests/install.pp": "1c58bd788dc03891100759f6d8688f9a",
+    "manifests/install_ruby.pp": "68d3cfa17ce5bd12c02909b8c36251f8",
+    "nefos.iml": "9f84d302a595c37fbeaf302dd58efedd",
+    "puppet/manifests/test.pp~": "e83ea609156bd08a06fbd29754c4bf2f",
+    "puppet/modules/single_user_rvm/README.md~": "cab6d4a6be1f86bc3724685c8523829a",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "tests/init.pp": "e0dacb25d73229b5a01bb39b3e7ed1d3",
+    "test~": "7160f5dc15be68cdf21b828fb496bae0"
+  }
+}
