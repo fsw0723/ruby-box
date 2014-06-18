@@ -1,9 +1,9 @@
 Vagrant.configure("2") do |config|
 
 config.vm.define "build" do |build|
-  build.vm.box_url = "http://box.puphpet.com/ubuntu-precise12042-x64-vbox43.box"
+  build.vm.box_url = "http://dl.dropbox.com/u/13510779/lxc-raring-amd64-2013-07-12.box"
   build.vm.hostname = "tw"
-  build.vm.box = "precise32"
+  build.vm.box = "saucy64"
 end
 
   config.vm.network "forwarded_port", guest: 8080, host: 8080

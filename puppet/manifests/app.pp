@@ -3,23 +3,25 @@ group { "puppet":
 }
 
 class install_ruby{
-	include rvm
+	include 'rvm'
 
 	rvm_system_ruby {
 	  'ruby-1.9':
 	    ensure      => 'present',
-	    default_use => true,
-	    build_opts  => ['--binary'];
+	    default_use => false,
+	    build_opts  => ['--binary'],
+	    require => Class['rvm'];
 	  'ruby-2.0':
 	    ensure      => 'present',
-	    default_use => false;
+	    default_use => true,
+	    require => Class['rvm'];
 	}
 	
 }
 
 
 exec { "use-ruby":
-	command => '/usr/local/rvm/bin/rvm use 2.0.0',
+	command => '/usr/local/rvm/bin/rvm use 2.0.0 && /usr/bin/which ruby',
 	require => Class['install_ruby'],
 }
 
