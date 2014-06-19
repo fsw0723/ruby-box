@@ -1,28 +1,43 @@
-group { "puppet":
-        ensure => "present",
+class requirements {
+  group { "puppet": ensure => "present", }
+  exec { "apt-update":
+    command => "/usr/bin/apt-get -y update"
+  }
+
+  package {
+    ["mysql-client", "mysql-server", "libmysqlclient-dev"]: 
+      ensure => installed, require => Exec['apt-update']
+  }
+
+  include nodejs
 }
 
-class install_ruby{
-	include 'rvm'
+class installrvm {
+  include rvm
+  rvm::system_user { vagrant: ; }
 
-	rvm_system_ruby {
+  rvm_system_ruby {
 	  'ruby-1.9':
 	    ensure      => 'present',
-	    default_use => false,
-	    build_opts  => ['--binary'],
-	    require => Class['rvm'];
+	    default_use => true;
 	  'ruby-2.0':
 	    ensure      => 'present',
-	    default_use => true,
-	    require => Class['rvm'];
+	    default_use => false;
+   }
+
+   rvm_gem {
+	  'bundler':
+	    name         => 'bundler',
+	    ruby_version => 'ruby-1.9.3-p547',
+	    ensure       => 'present',
+	    require      => Rvm_system_ruby['ruby-1.9'];
+	  'rails':
+	    name         => 'rails',
+	    ruby_version => 'ruby-1.9.3-p547',
+	    ensure       => 'present',
+	    require      => Rvm_system_ruby['ruby-1.9'];
 	}
-	
 }
 
-
-exec { "use-ruby":
-	command => '/usr/local/rvm/bin/rvm use 2.0.0 && /usr/bin/which ruby',
-	require => Class['install_ruby'],
-}
-
-include install_ruby
+include requirements
+include installrvm
