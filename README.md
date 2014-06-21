@@ -21,3 +21,7 @@ This will generate the following folder structure:
 
 [wip] Then I create a sample task arathi.rake which attempts to copy over our rails app into the rails-dev-box. 
 
+use cap -T to see all tasks
+
+to run a task do : cap <rolename> <namespace>:<taskname>
+
