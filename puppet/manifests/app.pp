@@ -1,15 +1,13 @@
 class requirements {
   group { "puppet": ensure => "present", }
-  exec { "apt-update":
-    command => "/usr/bin/apt-get -y update"
-  }
+
 
   package {
-    ["mysql-client", "mysql-server", "libmysqlclient-dev"]: 
-      ensure => installed, require => Exec['apt-update']
+    ["mysql-client", "mysql-server", "libmysqlclient-dev", "git"]: 
+      ensure => installed
   }
 
-  include nodejs
+  
 }
 
 class installrvm {
@@ -39,5 +37,10 @@ class installrvm {
 	}
 }
 
+class ror_requirements {
+	include nodejs
+}
+
 include requirements
 include installrvm
+include ror_requirements
