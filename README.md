@@ -2,7 +2,7 @@ ruby-box
 ========
 
 This is a box for ruby development. It includes:
-* Mysql
+* Mysql with default username: root
 * git
 * rvm
 * ruby 1.9
